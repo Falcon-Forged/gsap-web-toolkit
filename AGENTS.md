@@ -45,6 +45,29 @@ Claude Code and Codex both install plugins as **cached copies keyed by the `vers
 OpenClaw is the exception — it loads this tree live via `skills.load.extraDirs` with `watch: true`,
 so it needs no bump and no reinstall.
 
+## Always-on context cost (measured)
+
+Every skill description is loaded in every session on every surface, forever — including
+sessions that have nothing to do with the web. Measured on 2026-09-07 via `claude plugin details`:
+
+| Plugin | Always-on |
+|---|---|
+| `gsap-toolkit` (2 skills) | ~874 tok |
+| `gsap-vendor` (8 skills) | ~1,141 tok |
+| **Total** | **~2,015 tok** |
+
+The plan for this repo set a 1.5k threshold above which `gsap-vendor` would be scoped per-project.
+We are over it and both plugins are still installed at user scope anyway, deliberately: scoping the
+vendor skills per-project reintroduces exactly the per-repo setup step this repo exists to remove,
+and 2k tokens is a fair price for GSAP being available wherever you are. Recording the number rather
+than the rule, so the trade-off is re-checkable.
+
+The escape hatch, if it ever bites: install `gsap-vendor` with `--scope project` in web repos and
+keep only `gsap-toolkit` global. That is why the two plugins have no `dependencies` link.
+
+CI enforces a 6,000-character ceiling on total frontmatter descriptions. Adding a third house skill
+is the thing most likely to breach it — put depth in `references/`, not in a new skill.
+
 ## Licensing — say this correctly
 
 Every GSAP plugin is free, including for commercial use, including SplitText and MorphSVG. Install
