@@ -1,0 +1,4 @@
+interface:
+  display_name: "GSAP House Conventions"
+  short_description: "House motion rules for GSAP web work"
+  default_prompt: "Use $gsap-house to write or review GSAP motion against the house conventions."

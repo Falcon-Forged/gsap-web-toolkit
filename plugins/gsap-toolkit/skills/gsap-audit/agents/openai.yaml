@@ -1,0 +1,4 @@
+interface:
+  display_name: "GSAP Motion Audit"
+  short_description: "Audit a site's motion against the house rubric"
+  default_prompt: "Use $gsap-audit to audit this site's motion and report findings."

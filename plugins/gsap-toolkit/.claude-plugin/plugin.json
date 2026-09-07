@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "gsap-toolkit",
+  "displayName": "GSAP Web Toolkit",
+  "version": "0.1.0",
+  "description": "House GSAP conventions, a per-site motion audit rubric, and scaffolds for new web work. GSAP is the house default motion library. Defers to the gsap-vendor plugin for GSAP API detail.",
+  "author": { "name": "Falcon-Forged" },
+  "homepage": "https://github.com/Falcon-Forged/gsap-web-toolkit",
+  "repository": "https://github.com/Falcon-Forged/gsap-web-toolkit",
+  "license": "MIT",
+  "keywords": ["gsap", "animation", "motion", "scrolltrigger", "web", "astro", "react", "accessibility"]
+}

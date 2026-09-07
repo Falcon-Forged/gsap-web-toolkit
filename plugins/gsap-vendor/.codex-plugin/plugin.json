@@ -1,0 +1,35 @@
+{
+  "name": "gsap-vendor",
+  "version": "1.0.0+codex.gsap-aed9cfd",
+  "description": "Official GSAP skills from GreenSock (MIT) \u2014 core, timeline, ScrollTrigger, plugins, utils, React, frameworks, performance. Vendored byte-for-byte from greensock/gsap-skills at commit aed9cfd.",
+  "author": {
+    "name": "GreenSock",
+    "url": "https://github.com/greensock"
+  },
+  "homepage": "https://github.com/greensock/gsap-skills",
+  "repository": "https://github.com/Falcon-Forged/gsap-web-toolkit",
+  "license": "MIT",
+  "keywords": [
+    "gsap",
+    "greensock",
+    "scrolltrigger",
+    "animation",
+    "motion"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "GSAP Skills (GreenSock)",
+    "shortDescription": "Official GreenSock GSAP skills, vendored",
+    "longDescription": "The eight official GSAP skills from GreenSock \u2014 core API, timelines, ScrollTrigger, plugins, utilities, React, performance, and framework integration. Vendored byte-for-byte at a pinned commit.",
+    "developerName": "GreenSock",
+    "category": "Productivity",
+    "capabilities": [
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Explain how GSAP timelines sequence tweens",
+      "Set up a ScrollTrigger scrubbed scene"
+    ],
+    "brandColor": "#0AE448"
+  }
+}

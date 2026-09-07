@@ -1,0 +1,26 @@
+{
+  "_comment": [
+    "House GSAP dependency floor. Copy the relevant block into the project's package.json.",
+    "",
+    "gsap ^3.15.0 — current. ^3.13.0 is the hard FLOOR: SplitText.autoSplit and the",
+    "onSplit() callback do not exist below it, and the house SplitText pattern needs both.",
+    "A range like ^3.12.0 that happens to resolve to 3.15.0 is still wrong — it documents",
+    "a floor the code does not actually work at.",
+    "",
+    "Every plugin ships inside this one public package. There is no separate install,",
+    "no auth token, no private registry. See references/licensing.md."
+  ],
+
+  "vanilla-astro-vite": {
+    "dependencies": {
+      "gsap": "^3.15.0"
+    }
+  },
+
+  "react-next": {
+    "dependencies": {
+      "gsap": "^3.15.0",
+      "@gsap/react": "^2.1.2"
+    }
+  }
+}

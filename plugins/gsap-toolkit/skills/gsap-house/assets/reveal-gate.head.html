@@ -1,0 +1,28 @@
+<!-- Goes in <head>, before the stylesheet's first paint.
+
+     Adds the .js gate that arms the CSS start states, and a deadline that drops
+     it if the motion module never boots. The module clears the deadline on its
+     first line, so any failure after that point is the module's problem, not a
+     blank page.
+
+     2500ms is deliberately generous: it should never fire on a working page, and
+     when it does fire the visitor gets the finished layout rather than an empty
+     one. -->
+<script>
+  (function () {
+    var h = document.documentElement;
+    h.classList.add('js');
+    window.__revealFallback = setTimeout(function () {
+      h.classList.remove('js');
+    }, 2500);
+  })();
+</script>
+
+<!-- And the first lines of the motion entry module:
+
+     declare global { interface Window { __revealFallback?: number } }
+     if (window.__revealFallback) {
+       clearTimeout(window.__revealFallback);
+       window.__revealFallback = undefined;
+     }
+-->

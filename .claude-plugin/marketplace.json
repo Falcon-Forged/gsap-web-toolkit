@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "gsap-web-toolkit",
+  "owner": { "name": "Falcon-Forged" },
+  "description": "House GSAP web-development toolkit: motion conventions, a per-site audit rubric, and scaffolds, layered on the official GreenSock skills.",
+  "plugins": [
+    {
+      "name": "gsap-toolkit",
+      "source": "./plugins/gsap-toolkit",
+      "description": "House layer: gsap-house (the motion contract, plugin matrix, and scaffolds) and gsap-audit (the per-site motion audit rubric). Defers to gsap-vendor for GSAP API detail."
+    },
+    {
+      "name": "gsap-vendor",
+      "source": "./plugins/gsap-vendor",
+      "description": "Official GreenSock GSAP skills (MIT), vendored byte-for-byte from greensock/gsap-skills at a pinned commit."
+    }
+  ]
+}

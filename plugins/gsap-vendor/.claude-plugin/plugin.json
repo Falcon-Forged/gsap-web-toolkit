@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "gsap-vendor",
+  "displayName": "GSAP Skills (GreenSock, vendored)",
+  "version": "1.0.0+gsap.aed9cfd",
+  "description": "Official GSAP skills from GreenSock (MIT) \u2014 core, timeline, ScrollTrigger, plugins, utils, React, frameworks, performance. Vendored byte-for-byte from greensock/gsap-skills at commit aed9cfd.",
+  "author": {
+    "name": "GreenSock"
+  },
+  "homepage": "https://github.com/greensock/gsap-skills",
+  "repository": "https://github.com/Falcon-Forged/gsap-web-toolkit",
+  "license": "MIT",
+  "keywords": [
+    "gsap",
+    "greensock",
+    "scrolltrigger",
+    "animation",
+    "motion"
+  ]
+}

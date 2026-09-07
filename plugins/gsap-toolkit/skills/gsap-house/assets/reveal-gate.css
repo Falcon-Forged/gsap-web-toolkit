@@ -1,0 +1,24 @@
+/* The reveal gate.
+ *
+ * Start states are owned by the stylesheet and gated on .js, so a visitor whose
+ * JS never boots gets a complete, readable page rather than a blank one. The
+ * head script (see reveal-gate.head.html) adds .js and arms a deadline that
+ * removes it if the motion module never starts.
+ *
+ * opacity, never visibility: a transparent element still takes focus and still
+ * announces to a screen reader; an invisible one cannot. See the three-tier
+ * opacity/autoAlpha rule in SKILL.md.
+ */
+
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+/* Reduced motion never sees a start state at all — the page is simply finished. */
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}

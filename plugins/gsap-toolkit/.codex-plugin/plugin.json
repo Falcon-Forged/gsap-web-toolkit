@@ -1,0 +1,25 @@
+{
+  "name": "gsap-toolkit",
+  "version": "0.1.0",
+  "description": "House GSAP conventions, a per-site motion audit rubric, and scaffolds for new web work.",
+  "author": { "name": "Falcon-Forged", "url": "https://github.com/Falcon-Forged" },
+  "homepage": "https://github.com/Falcon-Forged/gsap-web-toolkit",
+  "repository": "https://github.com/Falcon-Forged/gsap-web-toolkit",
+  "license": "MIT",
+  "keywords": ["gsap", "animation", "motion", "scrolltrigger", "web", "astro", "react"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "GSAP Web Toolkit",
+    "shortDescription": "House GSAP conventions, audits, and scaffolds",
+    "longDescription": "House motion standards for web work built on GSAP: the reduced-motion and cleanup contract, the plugin adoption matrix, a per-site audit rubric, and framework scaffolds for Astro, React, and vanilla JS.",
+    "developerName": "Falcon-Forged",
+    "category": "Productivity",
+    "capabilities": ["Write"],
+    "defaultPrompt": [
+      "Audit this site's motion against the house GSAP conventions",
+      "Scaffold a GSAP scroll scene that respects reduced motion",
+      "Which GSAP plugin fits this interaction?"
+    ],
+    "brandColor": "#0AE448"
+  }
+}

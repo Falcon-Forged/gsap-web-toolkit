@@ -1,0 +1,86 @@
+name: verify
+
+on:
+  push:
+  pull_request:
+  schedule:
+    # Weekly upstream drift check. Informational — it must not fail the repo.
+    - cron: '17 9 * * 1'
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # The vendored GreenSock tree must match vendor.lock.json exactly.
+      # This is what makes "never hand-edit a vendored skill" enforceable.
+      - name: Vendor integrity
+        run: bash scripts/check-vendor.sh
+
+      - name: Manifests parse
+        run: |
+          for f in .claude-plugin/marketplace.json \
+                   .agents/plugins/marketplace.json \
+                   plugins/gsap-toolkit/.claude-plugin/plugin.json \
+                   plugins/gsap-toolkit/.codex-plugin/plugin.json \
+                   plugins/gsap-vendor/.claude-plugin/plugin.json \
+                   plugins/gsap-vendor/.codex-plugin/plugin.json \
+                   vendor.lock.json; do
+            python3 -c "import json,sys; json.load(open(sys.argv[1]))" "$f" || exit 1
+            echo "ok  $f"
+          done
+
+      # Frontmatter must carry name + description, and SKILL.md must stay under
+      # 500 lines — past that, progressive disclosure stops working and the body
+      # crowds out the reference files it is supposed to route to.
+      - name: Skill frontmatter and size
+        run: |
+          fail=0
+          while IFS= read -r f; do
+            head -1 "$f" | grep -qx -- '---' || { echo "no frontmatter: $f"; fail=1; }
+            awk '/^---$/{n++; next} n==1' "$f" | grep -q '^name:'        || { echo "no name: $f"; fail=1; }
+            awk '/^---$/{n++; next} n==1' "$f" | grep -q '^description:' || { echo "no description: $f"; fail=1; }
+            lines=$(wc -l < "$f")
+            [ "$lines" -le 500 ] || { echo "over 500 lines ($lines): $f"; fail=1; }
+            echo "ok  $f  ($lines lines)"
+          done < <(find plugins -name SKILL.md)
+          exit $fail
+
+      # Guard the always-on context budget. Every skill description is loaded in
+      # every session on every surface, forever — including sessions that have
+      # nothing to do with the web.
+      - name: Always-on description budget
+        run: |
+          python3 - <<'PY'
+          import pathlib, re, sys
+          total = 0
+          for p in sorted(pathlib.Path("plugins").rglob("SKILL.md")):
+              fm = p.read_text().split("---")[1]
+              m = re.search(r"^description:(.*?)(?=^\w+:|\Z)", fm, re.S | re.M)
+              n = len(" ".join(m.group(1).split())) if m else 0
+              total += n
+              print(f"{n:6d}  {p}")
+          print(f"{total:6d}  TOTAL")
+          if total > 6000:
+              sys.exit(f"Always-on description budget exceeded: {total} > 6000 chars")
+          PY
+
+      - name: Scripts are executable and lint clean
+        run: |
+          for f in scripts/*.sh; do
+            [ -x "$f" ] || { echo "not executable: $f"; exit 1; }
+            bash -n "$f" || exit 1
+            echo "ok  $f"
+          done
+
+  upstream:
+    runs-on: ubuntu-latest
+    # Advisory only: upstream moving is news, not a broken build.
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - name: Upstream drift
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: bash scripts/check-upstream.sh

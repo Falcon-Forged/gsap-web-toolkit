@@ -1,0 +1,18 @@
+{
+  "name": "gsap-web-toolkit",
+  "interface": { "displayName": "GSAP Web Toolkit" },
+  "plugins": [
+    {
+      "name": "gsap-toolkit",
+      "source": { "source": "local", "path": "./plugins/gsap-toolkit" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_USE" },
+      "category": "Productivity"
+    },
+    {
+      "name": "gsap-vendor",
+      "source": { "source": "local", "path": "./plugins/gsap-vendor" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_USE" },
+      "category": "Productivity"
+    }
+  ]
+}
