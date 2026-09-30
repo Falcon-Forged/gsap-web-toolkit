@@ -11,6 +11,7 @@ plugins to three agent surfaces from one checkout.
 |---|---|
 | `plugins/gsap-toolkit/skills/gsap-house/` | The house motion contract — rules, plugin matrix, framework adapters, scaffolds. **Hand-authored, edit freely.** |
 | `plugins/gsap-toolkit/skills/gsap-audit/` | The read-only per-site motion audit skill. |
+| `plugins/gsap-toolkit/skills/gsap-house/references/21st-dev.md` | How agents source, adapt, test, and review motion components from 21st.dev. **Hand-authored.** |
 | `plugins/gsap-vendor/skills/` | The eight official GreenSock skills (MIT). **Generated. Never hand-edit.** |
 | `vendor.lock.json` | The upstream pin: repo, commit SHA, and a sha256 per vendored file. |
 | `audits/` | Per-site motion audits, with stable finding IDs. |
@@ -74,6 +75,13 @@ Every GSAP plugin is free, including for commercial use, including SplitText and
 from the public `gsap` package. Never generate an `.npmrc` with a GreenSock auth token, never point at
 `npm.greensock.com`, never suggest joining Club GSAP. Full text and the verification command:
 `plugins/gsap-toolkit/skills/gsap-house/references/licensing.md`.
+
+## 21st.dev is a source, not an authority
+
+`gsap-house` §2a tells every agent to search 21st.dev (CLI or MCP) before hand-building a motion
+component. The house contract still wins: a 21st component is adapted to it, never the other way
+round. Keep the CLI/MCP facts in `references/21st-dev.md` dated and re-verified — the tool surface
+moves (component search ignoring `sort` is a verified 2026-09-30 fact, not a permanent one).
 
 ## Writing house rules
 

@@ -55,6 +55,15 @@ animation that has not run yet.
 
 Full contract: [`gsap-house/SKILL.md`](plugins/gsap-toolkit/skills/gsap-house/SKILL.md).
 
+## Sourcing components from 21st.dev
+
+Before hand-building a motion component, agents search [21st.dev](https://21st.dev) through the `21st`
+CLI or MCP server, shortlist by fit, engine, and code quality (using the site's Featured and Popular
+listings as a starting order), then adapt, rebase onto the house templates, or treat it as inspiration.
+Nothing is used out of the box, and everything sourced passes the same tests, `gsap-audit`, and design
+council as hand-written motion. Workflow:
+[`references/21st-dev.md`](plugins/gsap-toolkit/skills/gsap-house/references/21st-dev.md).
+
 ## Licensing
 
 **Every GSAP plugin is free**, including for commercial use, since Webflow's acquisition of GreenSock —
