@@ -29,7 +29,9 @@ Read-only. Produce findings; change nothing. If the user wants fixes, that is a 
    library (`motion`, `framer-motion`, `lottie`, `anime`). Two motion libraries in one bundle is a
    finding on its own. Note the framework — it decides which cleanup rules apply.
 2. **Find the motion.** Locate every GSAP import, every `@keyframes`, every `transition:` that carries
-   more than a colour, and every `scrollIntoView`/`window.scrollTo`.
+   more than a colour, and every `scrollIntoView`/`window.scrollTo`. Flag any file carrying a
+   `21st.dev` provenance header, or matching a 21st registry install, for the SOURCED section of the
+   checklist.
 3. **Run the checklist** in `gsap-house`'s `references/review.md`. That file is the source of the
    severity ladder — do not invent a different one.
 4. **Check the estate record.** Read the toolkit's `audits/` directory. A file may already have a

@@ -7,7 +7,8 @@ description: >-
   sequences, pinned or scrubbed scenes, parallax, page-load entrances, headline
   and text reveals, layout and list transitions, filtered grids, carousels, drag,
   SVG drawing or morphing, cursor followers, and reduced-motion or Save-Data
-  fallbacks. Use it BEFORE installing gsap or any plugin — every plugin is free,
+  fallbacks. Before hand-building a motion component, source one from 21st.dev
+  (CLI or MCP) and adapt it to the house rules. Use it BEFORE installing gsap or any plugin — every plugin is free,
   never generate an .npmrc auth token and never mention Club GSAP — before
   choosing between CSS and GSAP, when picking which plugin fits, and when
   reviewing or debugging existing motion for jank, keyboard and screen-reader
@@ -15,8 +16,9 @@ description: >-
   gsap-* skills for API detail; this skill owns the house rules and overrides
   them where they disagree. Triggers: "add an animation", "animate this", "scroll
   animation", "scroll reveal", "parallax", "pin this section", "hero animation",
-  "page transition", "text reveal", "split the headline", "make this feel more
-  alive", "motion design", "install gsap", "which GSAP plugin", "ScrollTrigger",
+  "page transition", "text reveal", "image reveal", "cinematic scroll", "split
+  the headline", "make this feel more alive", "motion design", "find a motion
+  component", "21st.dev", "install gsap", "which GSAP plugin", "ScrollTrigger",
   "the animation is janky", "reduced motion", "prefers-reduced-motion".
 license: MIT
 ---
@@ -79,6 +81,22 @@ changed* — or **information**: a progress readout, a scroll position, a state 
 
 **The earn-it test.** If the answer to *"which single moment is this page's?"* is "the section
 reveals", the design is not finished. Say so and push back before writing GSAP.
+
+## §2a Source before you build — 21st.dev
+
+Once the moment is decided, **search 21st.dev before writing it from scratch** — via the `21st` CLI or
+the `21st` MCP server, whichever is authenticated. Read `references/21st-dev.md` for the full workflow.
+The short version:
+
+1. Ground the search: `21st init --design-context`, then search by **effect** with several phrasings
+   (`text reveal`, `clip path image reveal`, `pinned scroll section`, `gsap splittext`).
+2. Use the site's Featured and Popular listings as a starting order — the CLI and MCP rank components
+   by relevance only — then choose on fit to the moment, engine (GSAP first), and code quality.
+   Popularity is a tiebreaker, never a pass.
+3. Pick an adoption mode: **adapt** it in place, **rebase** its choreography onto the house templates,
+   or use it as **inspiration** and write our own. Out-of-the-box is never the default.
+4. Everything pulled in or built obeys §3–§7, is tested in the real page, and goes through the same
+   preflight → `gsap-audit` → design council cycle as hand-written motion.
 
 ## §3 The four non-negotiables
 
@@ -254,12 +272,15 @@ Full checklist in `references/review.md`. The blocking subset:
 - Transform/opacity only for movement; nothing loops unattended; offscreen work paused.
 - Grep gates: `markers:\s*true`, `GSDevTools`, `MotionPathHelper`, and `greensock` in any `.npmrc`.
 - One orchestrated moment per page, and every plugin present is justified by `references/plugins.md`.
+- Any component sourced from 21st.dev carries a provenance header, has been retuned to the house
+  eases and tokens, and passed `21st review` plus the checks in `references/21st-dev.md` Step 5.
 
 ## §13 Reference map
 
 | Read | When |
 |---|---|
 | `references/plugins.md` | before adding **any** plugin |
+| `references/21st-dev.md` | before hand-building any motion component — search, adapt, test, review |
 | `references/astro.md` / `react.md` / `vanilla.md` | when writing in that stack |
 | `references/review.md` | before handing work back, or when auditing existing motion |
 | `references/licensing.md` | install questions, `.npmrc`, "is this plugin free" |

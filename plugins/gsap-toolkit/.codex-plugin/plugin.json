@@ -1,6 +1,6 @@
 {
   "name": "gsap-toolkit",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "House GSAP conventions, a per-site motion audit rubric, and scaffolds for new web work.",
   "author": { "name": "Falcon-Forged", "url": "https://github.com/Falcon-Forged" },
   "homepage": "https://github.com/Falcon-Forged/gsap-web-toolkit",

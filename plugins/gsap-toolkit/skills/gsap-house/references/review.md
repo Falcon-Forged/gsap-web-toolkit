@@ -75,6 +75,20 @@ grep -rn "greensock" .npmrc* 2>/dev/null # a leaked auth token, not a config
 - [ ] **A simplified or static mobile variant exists.** Long-scrub pinned sequences are not shipped
       unchanged to touch.
 
+## SOURCED — any component pulled from or modelled on 21st.dev
+
+Blocking, on top of every section above. Full workflow: `references/21st-dev.md`.
+
+- [ ] **Provenance header** on the file (`// Adapted from 21st.dev @<author>/<slug> (id <n>) — <licence>`)
+      and a line in the PR body naming the candidates considered and the adoption mode chosen.
+- [ ] **No `API_KEY_21ST` value** anywhere in the repo — `grep -rn "21st_sk_\|api_key=" .` is empty
+      outside `node_modules`.
+- [ ] **Every file the install wrote was read**, and nothing landed outside `components/`.
+- [ ] **Its own `registerPlugin` call is gone**; plugins come from the project's register module.
+- [ ] **Eases, durations, and colours retuned** to the house set and the project's tokens.
+- [ ] **Motion/Framer choreography ported to GSAP**, unless the plan records a decision to take the dependency.
+- [ ] **`21st review` is clean** on the changed files, and the Step 5 browser checks ran in the real page.
+
 ## Report what you could not check
 
 If you could not run the browser, say so and name what is unverified — the trigger count, the tab
